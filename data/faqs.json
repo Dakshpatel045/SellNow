@@ -1,0 +1,13 @@
+[
+    { "question": "How to post a product on SellNow?", "answer": "Login as a seller and use the Post Product page to list your items." },
+    { "question": "How to contact a seller?", "answer": "Open the product details and click on 'Chat with Seller' to start a conversation." },
+    { "question": "Is there any fee for posting products?", "answer": "Currently, posting products on SellNow is free for all sellers." },
+    { "question": "How to delete my posted product?", "answer": "Navigate to your seller dashboard, find the product, and click the delete button." },
+    { "question": "Can I edit my product listing?", "answer": "Yes, use the edit button in your seller dashboard to modify your product details." },
+    
+    { "question": "How do I search for products on SellNow?", "answer": "Go to the Products page and use filters such as category, city, state, and price range to find products easily." },
+    { "question": "Can buyers negotiate prices on SellNow?", "answer": "Yes, buyers can negotiate prices with sellers using the built-in chat feature before finalizing the deal." },
+    { "question": "How do I know if a seller is verified?", "answer": "Currently, all sellers register with email verification, but we recommend using the chat feature to communicate before proceeding." },
+    { "question": "What should I do if I forgot my SellNow password?", "answer": "Currently, you will need to contact SellNow support to reset your password if you forget it." },
+    { "question": "Can I post products in multiple categories?", "answer": "No, each product can only be posted under one category, but you can post multiple products under different categories as needed." }
+]

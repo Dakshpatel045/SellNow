@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders | SellNow</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="header"></div>
+    <main class="container my-5">
+        <h2 class="text-center mb-4 fw-bold">My Orders</h2>
+        <ul class="nav nav-tabs mb-4" id="orderTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="buyer-orders-tab" data-bs-toggle="tab" data-bs-target="#buyer-orders" type="button" role="tab">My Orders</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="seller-orders-tab" data-bs-toggle="tab" data-bs-target="#seller-orders" type="button" role="tab">Orders for My Products</button>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="buyer-orders" role="tabpanel">
+                <div id="buyerOrderList" class="row g-3"></div>
+            </div>
+            <div class="tab-pane fade" id="seller-orders" role="tabpanel">
+                <div id="sellerOrderList" class="row g-3"></div>
+            </div>
+        </div>
+    </main>
+    <div id="footer"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
