@@ -1,0 +1,191 @@
+/* 🌿 Base Typography */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-brand img {
+  max-height: 40px;
+  width: auto;
+}
+
+/* 🌿 Navbar Styling */
+.navbar-nav .nav-link {
+  font-weight: 500;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+.navbar-nav .nav-link:hover {
+  color: #ffc107;
+}
+
+/* 🌿 Footer Styling */
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-link {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-icon {
+  font-size: 1.2rem;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+.footer-icon:hover {
+  color: #fff;
+}
+
+footer .form-control-lg,
+footer .btn-lg {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.btn-custom {
+  background-color: white;
+  color: black;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-custom:hover {
+  background-color: #393E46;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* 🌿 Accordion Styling (for footer on mobile) */
+.accordion-button {
+  background-color: #f8f9fa;
+  color: #000;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+.accordion-button:not(.collapsed) {
+  background-color: #e0e0e0;
+  color: #000;
+  box-shadow: none;
+}
+.accordion-button:hover {
+  background-color: #f0f0f0;
+}
+.accordion-item {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 767.98px) {
+  #footerAccordion .accordion-body,
+  #footerAccordion ul,
+  #footerAccordion li,
+  #footerAccordion .footer-icon,
+  #footerAccordion .accordion-button {
+    text-align: left !important;
+    justify-content: flex-start !important;
+  }
+  .accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 16 16'%3e%3cpath fill-rule='evenodd' d='M1.646 5.646a.5.5 0 0 1 .708 0L8 11.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+    filter: none !important;
+  }
+}
+
+/* 🌿 Hero Section Styling */
+.hero-section {
+  min-height: 500px;
+}
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 350px;
+  }
+}
+@media (max-width: 576px) {
+  .hero-section {
+    min-height: 280px;
+  }
+}
+.hero-section h1 {
+  font-size: 2.5rem;
+}
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 576px) {
+  .hero-section h1 {
+    font-size: 1.5rem;
+  }
+  .hero-section p {
+    font-size: 0.9rem;
+  }
+}
+
+/* 🌿 Hero Button */
+.btn-hero {
+  background-color: white;
+  color: #212529;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+.btn-hero:hover {
+  background-color: #212529;
+  color: white;
+}
+
+/* 🌿 Badge Styling */
+.badge {
+  font-weight: 500;
+  border-radius: 0.5rem;
+  font-size: 0.7rem;
+  padding: 0.25em 0.5em;
+  vertical-align: middle;
+}
+
+/* 🌿 Offcanvas (for mobile navigation) */
+@media (max-width: 991px) {
+  .offcanvas {
+    width: 280px;
+  }
+  .offcanvas-body {
+    padding: 1rem;
+  }
+  .navbar-nav .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+  }
+  .navbar-nav .badge {
+    font-size: 0.7rem;
+    vertical-align: middle;
+  }
+}
+
+.btn-custom {
+  background-color: white;
+  color: black;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-custom:hover {
+  background-color: #393E46;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.card-img-top {
+    object-fit: contain !important; /* Ensures image fits within container while preserving aspect ratio */
+    background-color: #f8f9fa; /* Optional: Adds a background color to fill any empty space */
+}
+

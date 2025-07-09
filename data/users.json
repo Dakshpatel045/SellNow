@@ -1,0 +1,30 @@
+[
+  {
+    "id": "u1",
+    "name": "Daksh Patel",
+    "role": "seller",
+    "email": "dp.seller@gmail.com",
+    "password": "dp123"
+  },
+  {
+    "id": "u2",
+    "name": "Pal Patel",
+    "role": "seller",
+    "email": "pal.seller@gmail.com",
+    "password": "pal123"
+  },
+  {
+    "id": "u3",
+    "name": "Bharat Parihariya",
+    "role": "buyer",
+    "email": "bharat.buyer@gmail.com",
+    "password": "bharat123"
+  },
+  {
+    "id": "u4",
+    "name": "Samarth Prajapati",
+    "role": "buyer",
+    "email": "sam.buyer@gmail.com",
+    "password": "sam123"
+  }
+]

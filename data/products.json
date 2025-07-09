@@ -1,0 +1,222 @@
+[
+  {
+    "id": "p1",
+    "name": "iPhone 12",
+    "category": "Mobiles",
+    "price": 35000,
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "sellerId": "u1",
+    "description": "Used iPhone 12 in good condition.",
+    "image": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQJAPkj9VfMZcg7pUSG2sp-eGYHM5vTRau9-3eF_aEjBkTLegWu0-FHFw7paLNZPbZjJ3j7qwVrCerEleAGiIUtCO1WRV2aJne2nWklAJzoHIAc5UznjkK-GA"
+  },
+  {
+    "id": "p2",
+    "name": "Samsung Galaxy S21",
+    "category": "Mobiles",
+    "price": 28000,
+    "city": "Pune",
+    "state": "Maharashtra",
+    "sellerId": "u2",
+    "description": "Almost new, with box and charger.",
+    "image": "https://rukminim2.flixcart.com/image/832/832/xif0q/mobile/d/o/c/-original-imagtnqjmfqxxbj2.jpeg?q=70&crop=false"
+  },
+  {
+    "id": "p3",
+    "name": "Dell Inspiron Laptop",
+    "category": "Electronics",
+    "price": 40000,
+    "city": "Indore",
+    "state": "Madhya Pradesh",
+    "sellerId": "u1",
+    "description": "8GB RAM, 512GB SSD, good battery.",
+    "image": "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1706882619/Croma%20Assets/Computers%20Peripherals/Laptop/Images/300257_0_g7jvel.png?tr=w-640"
+  },
+  {
+    "id": "p4",
+    "name": "Sony Headphones",
+    "category": "Accessories",
+    "price": 2500,
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "sellerId": "u2",
+    "description": "Noise-cancelling, used for 6 months.",
+    "image": "https://m.media-amazon.com/images/I/41lArSiD5hL._SX679_.jpg"
+  },
+  {
+    "id": "p5",
+    "name": "Honda Activa 5G",
+    "category": "Vehicles",
+    "price": 55000,
+    "city": "Surat",
+    "state": "Gujarat",
+    "sellerId": "u1",
+    "description": "2019 Model, 15000 KM driven.",
+    "image": "images/download.jpg"
+  },
+  {
+    "id": "p6",
+    "name": "Dining Table Set",
+    "category": "Furniture",
+    "price": 9000,
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "sellerId": "u2",
+    "description": "4 Seater, wooden, excellent condition.",
+    "image": "https://m.media-amazon.com/images/I/81KnfrQR1PL._SX679_.jpg"
+  },
+  {
+    "id": "p7",
+    "name": "Samsung LED TV 42 inch",
+    "category": "Electronics",
+    "price": 18000,
+    "city": "Bhopal",
+    "state": "Madhya Pradesh",
+    "sellerId": "u1",
+    "description": "Smart TV, wall mount included.",
+    "image": "https://m.media-amazon.com/images/I/71ax3phCOVL._AC_UY327_FMwebp_QL65_.jpg"
+  },
+  {
+    "id": "p8",
+    "name": "Study Table",
+    "category": "Furniture",
+    "price": 3000,
+    "city": "Udaipur",
+    "state": "Rajasthan",
+    "sellerId": "u2",
+    "description": "Compact wooden study table.",
+    "image": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRVc0ImuTlLxZgqVg6XYpoeLVYvdpiJkyuBm8Y-jORricwa_IMaVSckUimc-EYhX5YWd_zeNhMZg1GRZPlU0Vb0qna2oS1yiIOZOLg&usqp=CAc"
+  },
+  {
+    "id": "p9",
+    "name": "Air Conditioner LG",
+    "category": "Home Appliances",
+    "price": 22000,
+    "city": "Vadodara",
+    "state": "Gujarat",
+    "sellerId": "u1",
+    "description": "1.5 ton, inverter AC, good condition.",
+    "image": "https://m.media-amazon.com/images/I/61GsoVqtL+L._SX679_.jpg"
+  },
+  {
+    "id": "p10",
+    "name": "Microwave Oven",
+    "category": "Home Appliances",
+    "price": 3500,
+    "city": "Nagpur",
+    "state": "Maharashtra",
+    "sellerId": "u2",
+    "description": "Samsung microwave oven, working perfectly.",
+    "image": "https://www.lg.com/content/dam/channel/wcms/in/images/microwave-ovens/mj2887bfum_dbkqiln_eail_in_c/gallery/MJ2887BFUM-DZ-02.jpg"
+  },
+  {
+    "id": "p11",
+    "name": "Gaming Chair",
+    "category": "Furniture",
+    "price": 7000,
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "sellerId": "u1",
+    "description": "Ergonomic gaming chair, comfortable.",
+    "image": "https://rukminim2.flixcart.com/image/832/832/xif0q/gaming-chair/w/8/w/beast-green-soul-original-imah9pzrz5fx6fjg.jpeg?q=70&crop=false"
+  },
+  {
+    "id": "p12",
+    "name": "Guitar",
+    "category": "Musical Instruments",
+    "price": 4000,
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "sellerId": "u2",
+    "description": "Acoustic guitar, good sound quality.",
+    "image": "https://m.media-amazon.com/images/I/31uozh8ADyL._SX300_SY300_QL70_FMwebp_.jpg"
+  },
+  {
+    "id": "p13",
+    "name": "Office Chair",
+    "category": "Furniture",
+    "price": 2500,
+    "city": "Surat",
+    "state": "Gujarat",
+    "sellerId": "u1",
+    "description": "Black color, adjustable height.",
+    "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRe5OTnG34TTUuroyLgXwt1Y2algN6Dki_QZDUruP-Aq9eR0UsqhtVZHQUOA5tleuCuxev5fiTBdzF4bBhYMkA7zWY8EXaiynCUepW68tYRUMt3_Wbbv3muVNcIWO4pwAmdYdOF9A&usqp=CAc"
+  },
+  {
+    "id": "p14",
+    "name": "Refrigerator",
+    "category": "Home Appliances",
+    "price": 14000,
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "sellerId": "u2",
+    "description": "Samsung double door fridge.",
+    "image": "https://images.samsung.com/is/image/samsung/p6pim/in/rt30c3733bx-hl/gallery/in-top-mount-freezer-convertible-freezer-rt30c3733bx-hl-541364519?$684_547_PNG$"
+  },
+  {
+    "id": "p15",
+    "name": "Washing Machine",
+    "category": "Home Appliances",
+    "price": 12000,
+    "city": "Indore",
+    "state": "Madhya Pradesh",
+    "sellerId": "u1",
+    "description": "LG fully automatic washing machine.",
+    "image": "https://images.samsung.com/is/image/samsung/p6pim/in/ww12db8b54gbtl/gallery/in-ww8400d-ww12db8b54gbtl-543876620?$684_547_PNG$"
+  },
+  {
+    "id": "p16",
+    "name": "Men's Bicycle",
+    "category": "Vehicles",
+    "price": 5000,
+    "city": "Pune",
+    "state": "Maharashtra",
+    "sellerId": "u2",
+    "description": "Hercules gear cycle, well maintained.",
+    "image": "https://m.media-amazon.com/images/I/71aI54-wVuL._SX679_.jpg"
+  },
+  {
+    "id": "p17",
+    "name": "Printer",
+    "category": "Electronics",
+    "price": 3000,
+    "city": "Bhopal",
+    "state": "Madhya Pradesh",
+    "sellerId": "u1",
+    "description": "HP inkjet printer, in working condition.",
+    "image": "https://m.media-amazon.com/images/I/31bLAfazaiL._SY300_SX300_QL70_FMwebp_.jpg"
+  },
+  {
+    "id": "p18",
+    "name": "Bookshelf",
+    "category": "Furniture",
+    "price": 2500,
+    "city": "Udaipur",
+    "state": "Rajasthan",
+    "sellerId": "u2",
+    "description": "5-layer wooden bookshelf.",
+    "image": "https://www.peelorange.com/cdn/shop/files/WhatsAppImage2024-09-06at10.08.19AM_1_700x.jpg?v=1725614251"
+  },
+  {
+    "id": "p19",
+    "name": "Smartwatch",
+    "category": "Accessories",
+    "price": 4500,
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "sellerId": "u1",
+    "description": "Mi smartwatch, 6 months old.",
+    "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTMf4gGlhfScaE0Ns5WflsHjf8xKTm7JuHf47LWsXzBsaNkSEuZVpE6yN8J46waSfUwBSCa1mMPDRqydKuwAe2NbyEf_hjTLWkAbqGH6FopqDNMopYa7-nsQ9toAviwAV21pBHF&usqp=CAc"
+  },
+  {
+    "id": "p20",
+    "name": "Kitchen Utensils Set",
+    "category": "Home Appliances",
+    "price": 1500,
+    "city": "Nagpur",
+    "state": "Maharashtra",
+    "sellerId": "u2",
+    "description": "Steel utensils, complete set.",
+    "image": "https://m.media-amazon.com/images/I/61hXBsSBWKL._SX679_.jpg"
+  }
+]

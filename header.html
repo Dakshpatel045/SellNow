@@ -1,0 +1,142 @@
+<!-- header.html -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-cash-stack fs-3 text-white me-2"></i>
+                <span class="fw-bold">SellNow</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas"
+                aria-controls="navbarOffcanvas" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="navbarOffcanvas"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                        <i class="bi bi-cash-stack fs-3 text-white me-2"></i>
+                        <span class="fw-bold">SellNow</span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html"><i class="bi bi-house-door me-1"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="products.html"><i class="bi bi-grid me-1"></i> Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="orders.html"><i class="bi bi-receipt me-1"></i> Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html"><i class="bi bi-info-circle me-1"></i> About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html"><i class="bi bi-envelope me-1"></i> Contact</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item nav-login">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#authModal"
+                                onclick="showForm('login')">
+                                <i class="bi bi-box-arrow-in-right me-1"></i> Login
+                            </a>
+                        </li>
+                        <li class="nav-item nav-login">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#authModal"
+                                onclick="showForm('signup')">
+                                <i class="bi bi-person-plus me-1"></i> Signup
+                            </a>
+                        </li>
+                        <li class="nav-item nav-post-product d-none">
+                            <a class="nav-link" href="post-product.html">
+                                <i class="bi bi-plus-circle me-1"></i> Post Product
+                            </a>
+                        </li>
+                        <li class="nav-item nav-logout d-none">
+                            <a class="nav-link" href="#" id="logoutLink">
+                                <i class="bi bi-box-arrow-left me-1"></i>
+                                <span id="logoutText">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Auth Modal -->
+<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="authModalLabel">Authentication</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex justify-content-center mb-3">
+                    <button class="btn btn-outline-primary me-2 active" onclick="showForm('login')">Login</button>
+                    <button class="btn btn-outline-primary" onclick="showForm('signup')">Signup</button>
+                </div>
+
+                <!-- Login Form -->
+                <div id="login-form" class="auth-form">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" placeholder="Enter email" required>
+                            <small class="text-danger d-none" id="loginEmailError">Invalid email</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Enter password"
+                                required>
+                            <small class="text-danger d-none" id="loginPasswordError">Password is too short</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+
+                <!-- Signup Form -->
+                <div id="signup-form" class="auth-form d-none">
+                    <form id="signupForm">
+                        <div class="mb-3">
+                            <label for="signupName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="signupName" placeholder="Enter full name"
+                                required>
+                            <small class="text-danger d-none" id="signupNameError">Name is required</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="signupEmail" placeholder="Enter email"
+                                required>
+                            <small class="text-danger d-none" id="signupEmailError">Invalid email or already
+                                exists</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="signupPassword" placeholder="Enter password"
+                                required>
+                            <small class="text-danger d-none" id="signupPasswordError">Password must be at least 6
+                                characters</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userRole" class="form-label">Role</label>
+                            <select class="form-select" id="userRole" required>
+                                <option value="" disabled selected>Select role</option>
+                                <option value="buyer">Buyer</option>
+                                <option value="seller">Seller</option>
+                            </select>
+                            <small class="text-danger d-none" id="userRoleError">Please select a role</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Signup</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
