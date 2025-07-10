@@ -413,6 +413,7 @@ $(document).ready(function () {
   // PRODUCTS PAGE LOGIC
   if ($("#productList").length > 0) {
     const products = JSON.parse(localStorage.getItem("products") || "[]");
+    const requests = JSON.parse(localStorage.getItem("requests") || "[]");
 
     const categories = [...new Set(products.map((p) => p.category))];
     const cities = [...new Set(products.map((p) => p.city))];
@@ -432,8 +433,14 @@ $(document).ready(function () {
       const { category, city, state, minPrice, maxPrice, name } = filter;
       $("#productList").empty();
 
+      // Filter out products with an accepted request
+      const acceptedProductIds = requests
+        .filter((r) => r.status === "Accepted")
+        .map((r) => r.productId);
+
       let filteredProducts = products.filter((p) => {
         let match = true;
+        if (acceptedProductIds.includes(p.id)) match = false;
         if (category && p.category !== category) match = false;
         if (city && p.city !== city) match = false;
         if (state && p.state !== state) match = false;
@@ -608,7 +615,9 @@ $(document).ready(function () {
         return;
       }
 
-      const chatKey = `chat_${currentUser.id}_${product.sellerId}_${productId}`;
+      const buyerId = $("#buyerSelect").val() || currentUser.id;
+      const sellerId = currentUser.role === "seller" ? currentUser.id : product.sellerId;
+      const chatKey = `chat_${buyerId}_${sellerId}_${productId}`;
       let chatHistory = JSON.parse(localStorage.getItem(chatKey) || "[]");
 
       chatHistory.push({
@@ -620,21 +629,22 @@ $(document).ready(function () {
 
       localStorage.setItem(chatKey, JSON.stringify(chatHistory));
       $("#chatInput").val("");
-      loadChatMessages(product.sellerId, currentUser.id, productId);
+      loadChatMessages(sellerId, buyerId, productId);
     });
 
     let chatRefreshInterval;
     $("#chatModal").on("shown.bs.modal", function () {
       const currentUser = JSON.parse(localStorage.getItem("currentUser"));
       const buyerId = $("#buyerSelect").val();
-      const productIdFromChat = $(".view-chat-btn[data-id]").data("id") || productId;
+      const productIdFromChat = $(".view-chat-btn[data-id]").data("id") || $(".chat-request-btn[data-product-id]").data("product-id") || productId;
 
       chatRefreshInterval = setInterval(() => {
-        if (currentUser) {
-          if (buyerId && productIdFromChat) {
+        if (currentUser && productIdFromChat) {
+          if (buyerId) {
             loadChatMessages(currentUser.id, parseInt(buyerId), productIdFromChat);
-          } else if (productId) {
-            loadChatMessages(product.sellerId, currentUser.id, productId);
+          } else if (currentUser.role === "buyer") {
+            const sellerId = JSON.parse(localStorage.getItem("products") || "[]").find((p) => p.id === productIdFromChat)?.sellerId;
+            loadChatMessages(sellerId, currentUser.id, productIdFromChat);
           }
         }
       }, 3000);
@@ -763,83 +773,122 @@ $(document).ready(function () {
 
     $(document).on("click", ".accept-request-btn", function () {
       const requestId = parseInt($(this).data("request-id"));
-      const requests = JSON.parse(localStorage.getItem("requests") || "[]");
-      const request = requests.find((r) => r.id === requestId);
-      if (!request || request.status !== "Requested") return;
-
-      const productRequests = requests.filter((r) => r.productId === request.productId);
-      productRequests.forEach((r) => {
-        if (r.id === requestId) {
-          r.status = "Accepted";
-        } else if (r.status === "Requested") {
-          r.status = "Rejected";
+      Swal.fire({
+        title: "Accept Request?",
+        text: "This will accept the request and reject others for this product.",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Accept",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const requests = JSON.parse(localStorage.getItem("requests") || "[]");
+          const request = requests.find((r) => r.id === requestId);
+          if (!request || request.status !== "Requested") return;
+          const productRequests = requests.filter((r) => r.productId === request.productId);
+          productRequests.forEach((r) => {
+            if (r.id === requestId) r.status = "Accepted";
+            else if (r.status === "Requested") r.status = "Rejected";
+          });
+          localStorage.setItem("requests", JSON.stringify(requests));
+          Swal.fire("Accepted!", "Request accepted successfully.", "success");
+          renderSellerRequests();
         }
       });
-
-      localStorage.setItem("requests", JSON.stringify(requests));
-      alert("Request accepted! Other requests for this product have been rejected.");
-      renderSellerRequests();
     });
 
     $(document).on("click", ".reject-request-btn", function () {
       const requestId = parseInt($(this).data("request-id"));
-      const requests = JSON.parse(localStorage.getItem("requests") || "[]");
-      const requestIndex = requests.findIndex((r) => r.id === requestId);
-      if (requestIndex !== -1 && requests[requestIndex].status === "Requested") {
-        requests[requestIndex].status = "Rejected";
-        localStorage.setItem("requests", JSON.stringify(requests));
-        alert("Request rejected.");
-        renderSellerRequests();
-      }
+      Swal.fire({
+        title: "Reject Request?",
+        text: "This will reject the buyer's request.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Reject",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const requests = JSON.parse(localStorage.getItem("requests") || "[]");
+          const requestIndex = requests.findIndex((r) => r.id === requestId);
+          if (requestIndex !== -1 && requests[requestIndex].status === "Requested") {
+            requests[requestIndex].status = "Rejected";
+            localStorage.setItem("requests", JSON.stringify(requests));
+            Swal.fire("Rejected!", "Request rejected successfully.", "success");
+            renderSellerRequests();
+          }
+        }
+      });
     });
 
     $(document).on("click", ".chat-request-btn", function () {
       const productId = parseInt($(this).data("product-id"));
-      const otherUserId = parseInt($(this).data("buyer-id") || $(this).data("seller-id"));
       const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      const buyerId = parseInt($(this).data("buyer-id"));
+      const sellerId = parseInt($(this).data("seller-id"));
 
+      if (!currentUser) {
+        alert("Please login to start a chat.");
+        $("#authModal").modal("show");
+        $("#authModal").on("shown.bs.modal", function () {
+          $("#loginEmail").focus();
+        });
+        return;
+      }
+      if (!productId || (!buyerId && !sellerId)) {
+        alert("Error: Unable to start chat. Missing user or product information.");
+        return;
+      }
+      if (currentUser.id === (buyerId || sellerId)) {
+        alert("You cannot chat with yourself!");
+        return;
+      }
+
+      $("#buyerSelectContainer").remove();
       $("#chatModal").modal("show");
       $("#chatModal").on("shown.bs.modal", function () {
         $("#chatInput").focus();
       });
 
-      if (currentUser.role === "seller") {
-        loadChatMessages(currentUser.id, otherUserId, productId);
-        $("#buyerSelectContainer").remove();
-        let buyerSelectHtml = `
-          <div id="buyerSelectContainer" class="mb-3">
-            <select id="buyerSelect" class="form-select">
-              <option value="${otherUserId}" selected></option>
-            </select>
-          </div>
-        `;
-        $("#chatModal .modal-body").prepend(buyerSelectHtml);
-        $("#sendChatBtn").off("click").on("click", function () {
-          const buyerId = $("#buyerSelect").val();
-          const message = $("#chatInput").val().trim();
-          if (!buyerId) {
-            alert("Please select a buyer first.");
-            return;
-          }
-          if (!message) {
-            alert("Please enter a message.");
-            return;
-          }
-          const chatKey = `chat_${buyerId}_${currentUser.id}_${productId}`;
-          let chatHistory = JSON.parse(localStorage.getItem(chatKey) || "[]");
-          chatHistory.push({
-            senderId: currentUser.id,
-            senderName: currentUser.name,
-            message,
-            timestamp: new Date().toISOString(),
-          });
-          localStorage.setItem(chatKey, JSON.stringify(chatHistory));
-          $("#chatInput").val("");
-          loadChatMessages(currentUser.id, parseInt(buyerId), productId);
-        });
-      } else {
-        loadChatMessages(otherUserId, currentUser.id, productId);
+      if (currentUser.role === "seller" && buyerId) {
+        const users = JSON.parse(localStorage.getItem("users") || "[]");
+        const buyer = users.find((u) => u.id === buyerId);
+        if (buyer) {
+          const buyerSelectHtml = `
+            <div id="buyerSelectContainer" class="mb-3">
+              <label for="buyerSelect" class="form-label">Chatting with:</label>
+              <select id="buyerSelect" class="form-select" disabled>
+                <option value="${buyerId}" selected>${buyer.name} (${buyer.email})</option>
+              </select>
+            </div>
+          `;
+          $("#chatModal .modal-body").prepend(buyerSelectHtml);
+        }
+        loadChatMessages(currentUser.id, buyerId, productId);
+      } else if (currentUser.role === "buyer" && sellerId) {
+        loadChatMessages(sellerId, currentUser.id, productId);
       }
+
+      $("#sendChatBtn").off("click").on("click", function () {
+        const message = $("#chatInput").val().trim();
+        if (!message) {
+          alert("Please enter a message.");
+          return;
+        }
+
+        const chatBuyerId = currentUser.role === "seller" ? $("#buyerSelect").val() : currentUser.id;
+        const chatSellerId = currentUser.role === "seller" ? currentUser.id : sellerId;
+        const chatKey = `chat_${chatBuyerId}_${chatSellerId}_${productId}`;
+        let chatHistory = JSON.parse(localStorage.getItem(chatKey) || "[]");
+
+        chatHistory.push({
+          senderId: currentUser.id,
+          senderName: currentUser.name,
+          message,
+          timestamp: new Date().toISOString(),
+        });
+
+        localStorage.setItem(chatKey, JSON.stringify(chatHistory));
+        $("#chatInput").val("");
+        loadChatMessages(chatSellerId, chatBuyerId, productId);
+      });
     });
   }
 
@@ -866,7 +915,7 @@ $(document).ready(function () {
     chatHistory.forEach((msg) => {
       const isCurrentUser = msg.senderId === currentUser.id;
       const alignment = isCurrentUser ? "text-end" : "text-start";
-      const badgeColor = isCurrentUser ? "primary" : "secondary";
+      const badgeColor = isCurrentUser ? "success" : "primary";
       chatContainer.append(`
         <div class="${alignment}">
           <span class="badge bg-${badgeColor} mb-1">
@@ -912,20 +961,19 @@ $(document).ready(function () {
       renderFaqs(faqs.slice(0, 5));
 
       $("#faqSearch").on("input", function () {
-        const query = $(this).val().toLowerCase();
-        if (query === "") {
+        const query = $(this).val().trim().toLowerCase();
+        if (!query) {
           renderFaqs(faqs.slice(0, 5));
-        } else {
-          const filteredFaqs = faqs.filter(
-            (faq) =>
-              faq.question.toLowerCase().includes(query) ||
-              faq.answer.toLowerCase().includes(query)
-          );
-          renderFaqs(filteredFaqs);
+          return;
         }
+
+        const filteredFaqs = faqs.filter(
+          (faq) =>
+            faq.question.toLowerCase().includes(query) ||
+            faq.answer.toLowerCase().includes(query)
+        );
+        renderFaqs(filteredFaqs);
       });
     });
   }
 });
-
-
