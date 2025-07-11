@@ -20,8 +20,8 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                         aria-label="Close"></button>
                 </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <div class="offcanvas-body ">
+                    <ul class="navbar-nav center-links mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active" href="index.html"><i class="bi bi-house-door me-1"></i> Home</a>
                         </li>
@@ -31,12 +31,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="orders.html"><i class="bi bi-receipt me-1"></i> Orders</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="about.html"><i class="bi bi-info-circle me-1"></i> About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html"><i class="bi bi-envelope me-1"></i> Contact</a>
-                        </li>
+                        </li> -->
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item nav-login">
@@ -52,7 +52,7 @@
                             </a>
                         </li>
                         <li class="nav-item nav-post-product d-none">
-                            <a class="nav-link" href="post-product.html">
+                            <a class="nav-link" href="post-product.html" data-page="post-product.html">
                                 <i class="bi bi-plus-circle me-1"></i> Post Product
                             </a>
                         </li>
@@ -73,56 +73,50 @@
 <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-light">
                 <h5 class="modal-title" id="authModalLabel">Authentication</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="d-flex justify-content-center mb-3">
-                    <button class="btn btn-outline-primary me-2 active" data-form="login">Login</button>
-                    <button class="btn btn-outline-primary" data-form="signup">Signup</button>
+                    <button id="loginBtn" class="btn btn-darks me-2 active" data-form="login">Login</button>
+                    <button id="signupBtn" class="btn btn-darks" data-form="signup">Signup</button>
                 </div>
 
                 <!-- Login Form -->
                 <div id="login-form" class="auth-form">
-                    <form id="loginForm">
+                    <form id="loginForm" novalidate>
                         <div class="mb-3">
                             <label for="loginEmail" class="form-label">Email</label>
                             <input type="email" class="form-control" id="loginEmail" placeholder="Enter email" required>
-                            <small class="text-danger d-none" id="loginEmailError">Invalid email</small>
+                            <div class="invalid-feedback" id="loginEmailError">Invalid email</div>
                         </div>
                         <div class="mb-3">
                             <label for="loginPassword" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="loginPassword" placeholder="Enter password"
-                                required>
-                            <small class="text-danger d-none" id="loginPasswordError">Password is too short</small>
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Enter password" required>
+                            <div class="invalid-feedback" id="loginPasswordError">Password must be at least 6 characters</div>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                        <button type="submit" class="btn btn-darks w-100">Login</button>
                     </form>
                 </div>
 
                 <!-- Signup Form -->
                 <div id="signup-form" class="auth-form d-none">
-                    <form id="signupForm">
+                    <form id="signupForm" novalidate>
                         <div class="mb-3">
                             <label for="signupName" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="signupName" placeholder="Enter full name"
-                                required>
-                            <small class="text-danger d-none" id="signupNameError">Name is required</small>
+                            <input type="text" class="form-control" id="signupName" placeholder="Enter full name" required>
+                            <div class="invalid-feedback" id="signupNameError">Name is required</div>
                         </div>
                         <div class="mb-3">
                             <label for="signupEmail" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="signupEmail" placeholder="Enter email"
-                                required>
-                            <small class="text-danger d-none" id="signupEmailError">Invalid email or already
-                                exists</small>
+                            <input type="email" class="form-control" id="signupEmail" placeholder="Enter email" required>
+                            <div class="invalid-feedback" id="signupEmailError">Invalid email or already exists</div>
                         </div>
                         <div class="mb-3">
                             <label for="signupPassword" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="signupPassword" placeholder="Enter password"
-                                required>
-                            <small class="text-danger d-none" id="signupPasswordError">Password must be at least 6
-                                characters</small>
+                            <input type="password" class="form-control" id="signupPassword" placeholder="Enter password" required>
+                            <div class="invalid-feedback" id="signupPasswordError">Password must be at least 6 characters</div>
                         </div>
                         <div class="mb-3">
                             <label for="userRole" class="form-label">Role</label>
@@ -131,9 +125,9 @@
                                 <option value="buyer">Buyer</option>
                                 <option value="seller">Seller</option>
                             </select>
-                            <small class="text-danger d-none" id="userRoleError">Please select a role</small>
+                            <div class="invalid-feedback" id="userRoleError">Please select a role</div>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Signup</button>
+                        <button type="submit" class="btn btn-darks w-100">Signup</button>
                     </form>
                 </div>
             </div>

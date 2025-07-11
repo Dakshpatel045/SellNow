@@ -23,6 +23,13 @@ body {
   color: #ffc107;
 }
 
+@media (min-width: 992px) { /* lg breakpoint and above */
+  .navbar-nav.center-links {
+    margin-left: 200px; /* adjust as needed to center perfectly */
+  }
+}
+
+
 /* 🌿 Footer Styling */
 footer {
   position: relative;
@@ -188,4 +195,92 @@ footer .btn-lg {
     object-fit: contain !important; /* Ensures image fits within container while preserving aspect ratio */
     background-color: #f8f9fa; /* Optional: Adds a background color to fill any empty space */
 }
+
+.view-details-btn ,.btn-darks{
+    background-color: white;
+  color: black;
+  border: 1px solid black;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.view-details-btn:hover , .btn-darks:hover{
+    background-color: #393E46;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn-darks.active{
+  background-color: #393E46;
+  color: white;
+}
+
+.form-control:focus,.form-select{
+  border-color: #212529 !important; 
+  box-shadow: none !important;
+}
+
+#productList .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#productList .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#buyerOrderList .card, #sellerOrderList .card, #sellerProductList .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#buyerOrderList .card:hover, #sellerOrderList .card:hover, #sellerProductList .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+  background-color: #f8f9fa; /* Light grey background on hover */
+  transform: translateY(-5px); /* Slight lift */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Soft shadow */
+  transition: all 0.3s ease;
+}
+
+/* Order card button group styling */
+.order-card-buttons {
+  display: flex;
+  flex-wrap: nowrap; /* Prevent buttons from wrapping */
+  gap: 8px; /* Space between buttons */
+  justify-content: flex-start; /* Align buttons to the left */
+  align-items: center; /* Vertically align buttons */
+}
+
+/* Adjust button sizes for mobile */
+.order-card-buttons .btn {
+  flex: 1; /* Distribute available space equally */
+  min-width: 0; /* Allow buttons to shrink */
+  font-size: 0.75rem; /* Smaller font size for mobile */
+  padding: 0.25rem 0.5rem; /* Reduce padding for compactness */
+}
+
+/* Ensure buttons fit in smaller screens */
+@media (max-width: 576px) {
+  .order-card-buttons .btn {
+    font-size: 0.7rem; /* Even smaller font for xs screens */
+    padding: 0.2rem 0.4rem; /* Further reduce padding */
+  }
+  .order-card-buttons .bi {
+    font-size: 0.8rem; /* Smaller icons on mobile */
+  }
+}
+
+/* Card body adjustments for better spacing */
+.card-body {
+  padding: 1rem; /* Ensure consistent padding */
+}
+
+/* Ensure cards don't shrink too much */
+.card {
+  min-width: 0; /* Prevent cards from being too narrow */
+}
+
+
+
 
